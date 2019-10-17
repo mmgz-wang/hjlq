@@ -11,7 +11,7 @@
             <div class="heading" v-if="item.title == ''?false:true"><van-icon color='#C0FF3E' name="flower-o" />{{item.title}}</div>
             <div class="dynamic">{{item.content}}</div>
             <Photo :photolist='item.photolist' v-if="item.photolist == ''?false:true"></Photo>
-            <span>21天前</span>
+            <span>{{item.timestamp}}21天前</span>
           </van-col>
       </van-row>
   </div>
@@ -57,9 +57,22 @@ export default {
   mounted(){
     console.log(this.type)
   },
-  created(){
-    
+  computed:{
+    time(oldtime){
+      let newtime = new Date().getTime();
+      let interval = newtime - oldtime;
+      let days = Math.floor(interval/(24*3600*1000));
+      let leave1=interval % (24*3600*1000);    //计算天数后剩余的毫秒数
+      let hours=Math.floor(leave1/(3600*1000));
+      //计算相差分钟数
+      let leave2=leave1%(3600*1000);        //计算小时数后剩余的毫秒数
+      let minutes=Math.floor(leave2/(60*1000));
+      // var time = days + "天"+hours+"时"+minutes+"分";
+      console.log(interval)
+      return newtime
+    }
   }
+
 }
 </script>
 

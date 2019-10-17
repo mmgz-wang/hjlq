@@ -55,10 +55,9 @@ export default {
   },
   mounted(){
     //   console.log(this.photolist)
+   
   },
-  created(){
-    
-  }
+  
 }
 </script>
 
