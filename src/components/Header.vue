@@ -1,36 +1,9 @@
 <template>
     <div class="header">
-        <router-view />
-        <van-tabbar route active-color='white' inactive-color='#8B6969' :fixed='true' style="backgroundColor:black">
-            <van-tabbar-item
-                replace
-                to="/home"
-                icon="home-o"
-            >
-                首页
-            </van-tabbar-item>
-            <van-tabbar-item
-                replace
-                to="/Member"
-                icon="vip-card-o"
-            >
-                会员
-            </van-tabbar-item>
-            <van-tabbar-item
-                replace
-                to="/Game"
-                icon="smile-comment-o"
-            >
-                游戏
-            </van-tabbar-item>
-            <van-tabbar-item
-                replace
-                to="/My"
-                icon="contact"
-            >
-                我的
-            </van-tabbar-item>
-        </van-tabbar>
+        <van-nav-bar title="邮件" left-arrow  :fixed='true' @click-left='left()' @click-right='right()'>
+            <van-icon name="search" slot="right" />
+            <van-icon name="arrow-left" slot="lift" />
+        </van-nav-bar>
     </div>
 </template>
 <script>
@@ -38,12 +11,20 @@ export default {
     name:'Header',
     data(){
         return{
-            active: 3
+
+        }
+    },
+    methods:{
+        left(){
+            console.log('左')
+        },
+        right(){
+            console.log('右')
         }
     }
 }
 </script>
-<style lang="stylus">
-[class*=van-hairline]::after
-    border none!important
+<style lang="stylus" scoped>
+.header
+    height 47px
 </style>

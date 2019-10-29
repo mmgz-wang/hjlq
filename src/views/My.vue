@@ -67,7 +67,7 @@ export default {
           username:'绵马贯众',
           usergendeer:'1',
           sentence:'一个铁憨憨!',
-          userlabel:['标签','标签','标签','标签','标签','标签','标签','标签','标签','标签','标签','标签','标签','标签','标签','标签',],
+          userlabel:['标签','标签','标签','标签','标签','标签','标签','标签','标签','标签','标签','标签','标签','标签','标签','标签','标签','标签','标签','标签','标签','标签',],
           portrait:'http://img3.imgtn.bdimg.com/it/u=1535148441,4230194458&fm=26&gp=0.jpg',
           region:'北京',
           dynamiclist:[
@@ -242,7 +242,7 @@ export default {
         .last 
           border none 
       .label
-        height:5.5rem
+        min-height 2rem
         padding 0
         // overflow hidden
         // white-space nowrap

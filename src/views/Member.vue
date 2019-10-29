@@ -1,8 +1,18 @@
 <template>
     <div class="member">
         <div class="content">
-            <List :dynamiclist='list' :type='type'></List>
+            <van-pull-refresh v-model="isLoading" @refresh="onRefresh" :success-duration='100'>
+                <van-list
+                    v-model="loading"
+                    :finished="finished"
+                    finished-text="没有更多了"
+                    @load="onLoad"
+                    >
+                    <List :dynamiclist='list' :type='type'></List>
+                </van-list>
+            </van-pull-refresh>
         </div>
+        <van-icon class="add"  @click='add()' name="free-postage" color='white' size='60px'/>
     </div>
 </template>
 <script>
@@ -164,10 +174,44 @@ export default {
                     photolist:[]
                 }
             ],
+            loading: false,
+            finished: false,
+            isLoading: false
         }   
+    },
+    methods:{
+        add(){
+            this.$router.push('/add')
+        },
+        onLoad() {
+            // 异步更新数据
+            setTimeout(() => {
+                for (let i = 0; i < 10; i++) {
+                this.list.push(this.list.length + 1);
+                }
+                // 加载状态结束
+                this.loading = false;
+
+                // 数据全部加载完成
+                if (this.list.length >= 15) {
+                    this.finished = true;
+                }
+            }, 100);
+        },
+        onRefresh(){
+            setTimeout(() => {
+                this.$toast('刷新成功');
+                this.isLoading = false;
+            }, 500);
+        }
     }
 }
 </script>
 <style lang="stylus">
-
+.member
+    position relative
+    .add
+        position fixed
+        right 30px
+        bottom 70px   
 </style>

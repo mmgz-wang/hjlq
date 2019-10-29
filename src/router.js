@@ -32,5 +32,10 @@ export default new Router({
       name: 'My',
       component: resolve => require(['./views/My.vue'],resolve)
     },
+    {
+      path: '/add',
+      name: 'add',
+      component: resolve => require(['./views/add.vue'],resolve)
+    },
   ]
 })

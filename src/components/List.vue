@@ -71,9 +71,9 @@ export default {
       if(interval < 60){
         return '刚刚';
       }else if(interval < 3600){
-        return Math.round(interval/60) + '分钟';
+        return Math.round(interval/60) + '分钟前';
       }else if(interval < 86400){
-        return Math.round(interval/3600) + '小时';
+        return Math.round(interval/3600) + '小时前';
       }else{
         return '大概是穿越了！';
       }
@@ -87,7 +87,7 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="stylus">
 .hello
-  margin-top 10px
+  // margin-top 46px
   color white
   position relative 
   .van-row
