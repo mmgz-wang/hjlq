@@ -1,7 +1,7 @@
 <template>
     <div class="footer">
         <router-view />
-        <van-tabbar route active-color='white' inactive-color='#8B6969' :fixed='true' style="backgroundColor:black">
+        <van-tabbar :route='false' active-color='white' inactive-color='#8B6969' :fixed='true' style="backgroundColor:black">
             <van-tabbar-item
                 replace
                 to="/home"

@@ -1,11 +1,17 @@
 <template>
   <div class="hello">
       <van-row v-for='(item,index) in dynamiclist' :class="index == 0?'first' : '' " :key='index'>
+        <div v-show="item == {}?false:true">
           <van-col span='4' offset='1'>
             <div v-if="type == 'time'?true:false">
               {{item.Creationtime}}
             </div>
-            <van-image v-if="type == 'portrait'?true:false" round width="50px" height="50px" :src="item.portrait"/>            
+            <!-- <van-image  v-if="item.portrait == ''?false:true" round width="50px" height="50px" :src="" alt/>             -->
+            <van-image v-show="type == 'portrait'?true:false" :src="item.portrait">
+              <template v-slot:loading>
+                <van-loading type="spinner" size="20" />
+              </template>
+            </van-image>
           </van-col>
           <van-col span='16' offset='1'>
             <div class="heading" v-if="item.title == ''?false:true"><van-icon color='#C0FF3E' name="flower-o" />{{item.title}}</div>
@@ -13,6 +19,7 @@
             <Photo :photolist='item.photolist' v-if="item.photolist == ''?false:true"></Photo>
             <span ref='oldtime'>{{item.timestamp|time(item.timestamp)}}</span>
           </van-col>
+        </div>
       </van-row>
   </div>
 </template>
@@ -56,12 +63,13 @@ export default {
     }
   },
   mounted(){
+    console.log(this.dynamiclist)
   },
   filters:{
     time(val,oldtime){
       let newtime = new Date().getTime();
       let interval = Math.round((newtime - oldtime)/1000);
-      // let days = Math.floor(interval/(24*3600*1000));
+      let days = Math.floor(interval/(24*3600*1000));
       // let leave1=interval % (24*3600*1000);    //计算天数后剩余的毫秒数
       // let hours=Math.floor(leave1/(3600*1000));
       // //计算相差分钟数
@@ -74,10 +82,11 @@ export default {
         return Math.round(interval/60) + '分钟前';
       }else if(interval < 86400){
         return Math.round(interval/3600) + '小时前';
+      }else if(interval < 2592000){
+        return Math.round(interval/86400) + '天前';
       }else{
         return '大概是穿越了！';
       }
-      return val
     }
   }
 

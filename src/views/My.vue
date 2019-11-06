@@ -48,15 +48,18 @@
             </van-col>
         </van-row> -->
     </div>
+    <Footer></Footer>
   </div>
 </template>
 
 <script>
 import List from '@/components/List.vue'
 import video from '@/components/video.vue'
+import Footer from "@/components/Footer.vue"
 export default {
   components:{
     List,
+    Footer,
     video
   },
   data(){

@@ -98,6 +98,7 @@ export default {
     position relative 
     .album
         width 100%
+        min-height 150px
         border 1px solid rgba(230,230,230,.5)
         border-radius 8px
         overflow hidden
