@@ -7,7 +7,7 @@
               {{item.Creationtime}}
             </div>
             <!-- <van-image  v-if="item.portrait == ''?false:true" round width="50px" height="50px" :src="" alt/>             -->
-            <van-image v-show="type == 'portrait'?true:false" :src="item.portrait">
+            <van-image v-show="type == 'portrait'?true:false" round :src="item.portrait">
               <template v-slot:loading>
                 <van-loading type="spinner" size="20" />
               </template>

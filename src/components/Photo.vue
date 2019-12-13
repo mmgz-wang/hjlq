@@ -59,13 +59,12 @@ export default {
     gtouchstart(){
       this.timeOutEvent = setTimeout(()=>{
           this.timeOutEvent = 0;
-          //真正长按后应该执行的内容
-          　　
+          //真正长按后应该执行的内容　
           alert("长按事件触发发");
       },500);//这里设置定时器，定义长按500毫秒触发长按事件，时间可以自己改，个人感觉500毫秒非常合适
       return false;
     },
-    　　　　//如果手指有移动，则取消所有事件，此时说明用户只是要移动而不是长按
+    //如果手指有移动，则取消所有事件，此时说明用户只是要移动而不是长按
     gtouchmove(){
       clearTimeout(this.timeOutEvent);//清除定时器
       this.timeOutEvent = 0;
@@ -98,7 +97,7 @@ export default {
     position relative 
     .album
         width 100%
-        min-height 150px
+        min-height 140px
         border 1px solid rgba(230,230,230,.5)
         border-radius 8px
         overflow hidden

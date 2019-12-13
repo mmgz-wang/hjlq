@@ -1,5 +1,6 @@
 <template>
   <div class="my">
+    <Header></Header>
     <div class="user">
       <van-row>
         <van-col span="8" offset='2'>
@@ -48,18 +49,17 @@
             </van-col>
         </van-row> -->
     </div>
-    <Footer></Footer>
   </div>
 </template>
 
 <script>
 import List from '@/components/List.vue'
 import video from '@/components/video.vue'
-import Footer from "@/components/Footer.vue"
+import Header from "@/components/Header.vue"
 export default {
   components:{
     List,
-    Footer,
+    Header,
     video
   },
   data(){

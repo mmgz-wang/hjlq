@@ -1,7 +1,7 @@
 <template>
   <div class="content">
-    <router-view></router-view>
     <Header></Header>
+    <!-- <router-view></router-view> -->
   </div>
 </template>
 
@@ -16,6 +16,9 @@ export default {
     return {
       
     }
+  },
+  mounted(){
+    
   }
 }
 </script>

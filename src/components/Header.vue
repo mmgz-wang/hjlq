@@ -6,15 +6,27 @@
         </van-nav-bar>
     </div> -->
     <div class="header">  
-      <van-tabs v-model="active" :swipeable='true' background='black' title-active-color='#ccc' color='#ccc' line-height='1px'>
-        <van-tab v-for="item in list">
+      <van-tabs v-model="active" 
+                :swipeable='true'
+                :sticky='true'
+                @click='tab()'
+                @scroll='scroll()'
+                background='black' 
+                title-active-color='#ccc' 
+                color='#ccc' 
+                line-height='1px'>
+        <van-tab v-for="item in list" :to='{path:item.path}'>
             <!-- <dl slot="title">
               <dd></dd>
               <dt><van-icon :name="item.name" /></dt>
             </dl> -->
-          <div slot='title' class="solt">
+          <div slot='title' class="solt" >
             <van-icon :name="item.name" size='20px' />
-            <span></span> 
+          </div>
+          <div slot='default' >
+            <!-- //<router-link ></router-link> -->
+            <router-view></router-view>
+
           </div>
         </van-tab>
       </van-tabs>
@@ -31,23 +43,23 @@ export default {
     },
     data(){
         return{
-          active:0,
+          active:'',
           list:[
             {
               name:'home-o',
-              text:'首页'
+              path:'/home'
             },
             {
               name:'bulb-o',
-              text:'动态'
+              path:'/Member'
             },
             {
               name:'comment-o',
-              text:'讯息'
+              path:'/Game'
             },
             {
               name:'contact',
-              text:'我的'
+              path:'/My'
             }
           ]
         }
@@ -60,6 +72,12 @@ export default {
         },
         right(){
             console.log('右')
+        },
+        click(){
+          console.log(event)
+        },
+        scroll(){
+
         }
     },
     mounted(){
@@ -72,12 +90,9 @@ export default {
     height 50px
     .van-tabs--line
       height 50px
-    .van-hairline--top-bottom::after, 
-    .van-hairline-unset--top-bottom::after
-      border none 
-      .slot i 
-        font-size 18px
-      .van-tab
-        line-height 55px
+      .solt
+        line-height 50px
+        .slot i 
+          font-size 18px
 
 </style>
